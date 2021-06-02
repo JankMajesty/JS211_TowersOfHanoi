@@ -32,20 +32,14 @@ const printStacks = () => {
 // Next, what do you think this function should do?
 const movePiece = (startStack, endStack) => {
   // Your code here
-
+// we need to pop the end of the startStack and push it to the endStack
   return stacks[endStack].push(stacks[startStack].pop())
-  // we need a parameter called 'startStack'
-  // we need a parameter called 'endStack'
-
-  //Take the last item for startingStack array // maybe use pop()?
-  //place the items that we 'removed' into the 'endStack' // maybe push()?
-  
-
 }
 
 // Before you move, should you check if the move it actually allowed? Should 3 be able to be stacked on 2
 const isLegal = (startStack, endStack) => {
   // Your code here
+  // we need to parameters to compare. I will use start and end
   let start = stacks[startStack][stacks[startStack].length -1];
   let end = stacks[endStack][stacks[endStack].length -1];
 
@@ -73,6 +67,7 @@ const isLegal = (startStack, endStack) => {
 // What is a win in Towers of Hanoi? When should this function run?
 const checkForWin = () => {
   // Your code here
+  // we need to check the 'b' column length for 4 for a win
   if (stacks.b.length === 4) {
     console.log("You win!");
     return true;
@@ -80,13 +75,13 @@ const checkForWin = () => {
   else {
     return false;
   }
-  //for loop?
+ 
 
 }
 
 // When is this function called? What should it do with its argument?
 const towersOfHanoi = (startStack, endStack) => {
-  // Your code here
+  // if the move is legal, it should check for a win
   if (isLegal(startStack, endStack)) {
     movePiece(startStack, endStack);
     checkForWin();
